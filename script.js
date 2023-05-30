@@ -58,19 +58,19 @@ async function loadCharacters(url) {
 
                 const characterHeight = document.createElement("span")
                 characterHeight.className = "character-details"
-                characterHeight.innerText = `Altura: ${character.height}`
+                characterHeight.innerText = `Altura: ${ convertHeight(character.height)}`
 
                 const characterMass = document.createElement("span")
                 characterMass.className = "character-details"
-                characterMass.innerText = `Peso: ${character.mass}`
+                characterMass.innerText = `Peso: ${convertMass(character.mass)}`
 
                 const characterEyeColor = document.createElement("span")
                 characterEyeColor.className = "character-details"
-                characterEyeColor.innerText = `Cor dos olhos : ${character.eye_color}`
+                characterEyeColor.innerText = `Cor dos olhos : ${convertEyeColor(character.eye_color)}`
 
                 const characterBirthYear = document.createElement("span")
                 characterBirthYear.className = "character-details"
-                characterBirthYear.innerText = `Nascimento : ${character.birth_year}`
+                characterBirthYear.innerText = `Nascimento : ${convertBithYear(character.birth_year)}`
 
                 modalContent.appendChild(characterImage)
                 modalContent.appendChild(name)
@@ -134,4 +134,44 @@ async function loadPreviousPage() {
 function hideModal() {
     const modal = document.getElementById('modal')
     modal.style.visibility = "hidden"
+}
+
+function convertEyeColor(eyeColor){
+    const cores = {
+        blue: "azul",
+        brown: "castanho",
+        green: "verde",
+        yellow: "amarelo",
+        black: "preto",
+        pink: "rosa",
+        red: "vermelho",
+        orange: "laranja",
+        hazel: "avela",
+        unknown: "desconhecida"
+    };
+    return cores[eyeColor.toLowerCase()] || eyeColor;
+}
+
+function convertHeight(height){
+    if(height === "unknown"){
+        return "desconhecida"
+    }
+
+    return(height / 100).toFixed(2);
+}
+
+function convertMass(mass){
+    if(mass === "unknown"){
+        return "desconhecido"
+    }
+
+    return `${mass}kg`
+}
+
+function convertBithYear(birthYear){
+    if(birthYear === "unknown"){
+        return "desconhecido"
+    }
+
+    return birthYear
 }
