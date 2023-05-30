@@ -47,11 +47,37 @@ async function loadCharacters(url) {
                 modalContent.innerHTML = ''
 
                 const characterImage = document.createElement("div")
+
                 characterImage.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`
+
                 characterImage.className = "character-image"
 
-                
-                
+                const name = document.createElement("span")
+                name.className = "character-details"
+                name.innerText = `Nome : ${character.name}`
+
+                const characterHeight = document.createElement("span")
+                characterHeight.className = "character-details"
+                characterHeight.innerText = `Altura: ${character.height}`
+
+                const characterMass = document.createElement("span")
+                characterMass.className = "character-details"
+                characterMass.innerText = `Peso: ${character.mass}`
+
+                const characterEyeColor = document.createElement("span")
+                characterEyeColor.className = "character-details"
+                characterEyeColor.innerText = `Cor dos olhos : ${character.eye_color}`
+
+                const characterBirthYear = document.createElement("span")
+                characterBirthYear.className = "character-details"
+                characterBirthYear.innerText = `Nascimento : ${character.birth_year}`
+
+                modalContent.appendChild(characterImage)
+                modalContent.appendChild(name)
+                modalContent.appendChild(characterHeight)
+                modalContent.appendChild(characterMass)
+                modalContent.appendChild(characterEyeColor)
+                modalContent.appendChild(characterBirthYear)
             }
 
            mainContent.appendChild(card)
