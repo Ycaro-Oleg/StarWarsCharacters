@@ -39,6 +39,21 @@ async function loadCharacters(url) {
             characterNameBG.appendChild(characterName)
             card.appendChild(characterNameBG)
 
+            card.onclick = () => {
+                const modal = document.getElementById("modal")
+                modal.style.visibility = "visible"
+
+                const modalContent = document.getElementById("modal-content")
+                modalContent.innerHTML = ''
+
+                const characterImage = document.createElement("div")
+                characterImage.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`
+                characterImage.className = "character-image"
+
+                
+                
+            }
+
            mainContent.appendChild(card)
         });
 
@@ -88,4 +103,9 @@ async function loadPreviousPage() {
         console.log(error)
         alert('Erro ao carregar a página anterior')
     }
+}
+
+function hideModal() {
+    const modal = document.getElementById('modal')
+    modal.style.visibility = "hidden"
 }
